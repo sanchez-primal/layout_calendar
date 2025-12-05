@@ -85,7 +85,7 @@ $days:
     }
 
     transition-duration: 0.5s;
-    transition-property: background-color transform;
+    transition-property: background-color, transform;
     &:hover {
       cursor: pointer;
       transform: translateY(-20px);
