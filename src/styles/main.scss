@@ -1,7 +1,6 @@
-// nothing was said about removing margins on body.
-
 $calendar-cell-width: 100px;
 $calendar-cell-height: 100px;
+$calendar-cell-border-width: 1px;
 $calendar-cell-gap: 1px;
 $days:
   mon 0,
@@ -12,6 +11,8 @@ $days:
   sat 5,
   sun 6;
 
+// nothing was said about removing margins on body.
+// a lot of instructions were really bad.
 .page {
   &__body {
     margin: 0;
@@ -22,7 +23,6 @@ $days:
   display: flex;
   align-items: center;
   justify-content: center;
-
   height: 100svh;
 
   &__target {
@@ -35,7 +35,7 @@ $days:
   flex-wrap: wrap;
   gap: $calendar-cell-gap;
 
-  width: $calendar-cell-width * 7 + $calendar-cell-gap * 6;
+  width: ($calendar-cell-width + 2 * $calendar-cell-border-width) * 7 + $calendar-cell-gap * 6;
   padding: 10px;
 
   list-style: none;
@@ -58,7 +58,7 @@ $days:
         &-#{$day} {
           & > :first-child {
             // is the choice of selectors good?
-            margin-left: $number * ($calendar-cell-width + $calendar-cell-gap);
+            margin-left: $number * ($calendar-cell-width + ($calendar-cell-border-width * 2) + $calendar-cell-gap);
           }
         }
       }
@@ -66,10 +66,9 @@ $days:
   }
 
   &__day {
-    box-sizing: border-box;
     width: $calendar-cell-width;
     height: $calendar-cell-height;
-    border: 1px solid black;
+    border: $calendar-cell-border-width solid black;
 
     line-height: $calendar-cell-height;
     text-align: center;
