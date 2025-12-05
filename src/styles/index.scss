@@ -12,10 +12,18 @@ $days:
   sat 5,
   sun 6;
 
+.page {
+  &__body {
+    margin: 0;
+  }
+}
+
 .centering-container {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  height: 100svh;
 
   &__target {
     margin: 0;
@@ -36,7 +44,7 @@ $days:
     // "all the modifiers" section; good?
     &month-length {
       @for $length from 28 through 31 {
-        &--#{$length} {
+        &-#{$length} {
           & :nth-child(n + #{$length + 1}) {
             // is the application of maths good?
             display: none;
@@ -47,7 +55,7 @@ $days:
 
     &start-day {
       @each $day, $number in $days {
-        &--#{$day} {
+        &-#{$day} {
           & :first-child {
             // is the choice of selectors good?
             margin-left: $number * ($calendar-cell-width + $calendar-cell-gap);
@@ -57,7 +65,7 @@ $days:
     }
   }
 
-  &__cell {
+  &__day {
     box-sizing: border-box;
     width: $calendar-cell-width;
     height: $calendar-cell-height;
