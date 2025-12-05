@@ -45,7 +45,7 @@ $days:
     &month-length {
       @for $length from 28 through 31 {
         &-#{$length} {
-          & :nth-child(n + #{$length + 1}) {
+          & > :nth-child(n + #{$length + 1}) {
             // is the application of maths good?
             display: none;
           }
@@ -56,7 +56,7 @@ $days:
     &start-day {
       @each $day, $number in $days {
         &-#{$day} {
-          & :first-child {
+          & > :first-child {
             // is the choice of selectors good?
             margin-left: $number * ($calendar-cell-width + $calendar-cell-gap);
           }
